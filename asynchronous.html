@@ -92,7 +92,7 @@
         };
 
         // The argument IDs is the result of the successful promise
-        getIDs
+        /*getIDs
         .then((IDs) => {
             console.log(IDs); // [523, 883, 425, 975]
             return getRecipe(IDs[2])
@@ -106,7 +106,23 @@
         })
         .catch(error => {
             console.log(error);
-        });
+        });*/
+
+
+
+        // asynchronous function
+        async function getRecipesAW() {
+            const IDs = await getIDs;
+            console.log(IDs);
+            const recipe = await getRecipe(IDs[2]);
+            console.log(recipe);
+            const related = await getRelated('Agne');
+            console.log(related);
+
+            return recipe;
+        }
+
+        getRecipesAW().then(result => console.log(`${result} is the best ever.`)); // 425: Fresh tomato pasta is the best ever. (because we returned recipe)
 
 
 
