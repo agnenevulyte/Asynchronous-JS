@@ -29,7 +29,7 @@
         first();*/
 
         // The old way: asynchronous JavaScript with Callbacks
-        function getRecipe() {
+        /*function getRecipe() {
             setTimeout(() => {
                 const recipeID = [523, 883, 425, 975];
                 console.log(recipeID);
@@ -53,7 +53,31 @@
             }, 1500);
         };
 
-        getRecipe();
+        getRecipe();*/
+
+
+
+
+
+        // PROMISES
+        const getIDs = new Promise((resolve, reject) => {
+            // asynchronous code - setTimout. SetTimeout is always successful, that's why it's only a resolve function inside
+            setTimeout(() => {
+                resolve([523, 883, 425, 975]);
+            }, 1500);
+        });
+
+        // The argument IDs is the result of the successful promise
+        getIDs
+        .then((IDs) => {
+            console.log(IDs); // [523, 883, 425, 975]
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
+
     </script>
 </body>
 </html>
